@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer School — Economics of Health &amp; Human Capital | EcHo · Royal Holloway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root{
+    --burgundy:#8B1A3A;
+    --burgundy-deep:#6A1029;
+    --burgundy-light:#A8274E;
+    --cream:#FAF6F1;
+    --sand:#F0E8DD;
+    --charcoal:#2B2B2B;
+    --text:#3A3A3A;
+    --text-light:#6B6B6B;
+    --white:#FFFFFF;
+    --accent-gold:#C8973E;
+    --accent-sage:#5E8C6A;
+    --border:#E0D6CA;
+  }
+
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    color:var(--text);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ─── HERO ─── */
+  .hero{
+    position:relative;
+    min-height:clamp(520px,70vh,700px);
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:var(--burgundy-deep);
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(200,151,62,.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 85% 70%, rgba(94,140,106,.10) 0%, transparent 50%),
+      linear-gradient(165deg, #6A1029 0%, #8B1A3A 40%, #7A1533 100%);
+  }
+  .hero-grid{
+    position:absolute;inset:0;opacity:.04;
+    background-image:
+      linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+    background-size:60px 60px;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    max-width:1100px;margin:0 auto;
+    padding:3rem 2rem 3.5rem;
+    width:100%;
+  }
+  .hero h1{
+    font-family:'DM Serif Display',Georgia,serif;
+    font-size:clamp(2.4rem,5vw,3.8rem);
+    color:var(--white);
+    line-height:1.12;
+    max-width:700px;
+    margin-bottom:1rem;
+  }
+  .hero h1 em{font-style:italic;color:var(--accent-gold)}
+  .hero-sub{
+    font-size:1.15rem;color:rgba(255,255,255,.7);
+    max-width:600px;line-height:1.6;
+    margin-bottom:2rem;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:1.4rem 2.2rem;
+    color:rgba(255,255,255,.9);
+    font-size:.95rem;font-weight:500;
+  }
+  .hero-meta span{display:flex;align-items:center;gap:.45rem}
+  .hero-meta svg{width:18px;height:18px;flex-shrink:0;opacity:.7}
+
+  /* ─── NAV STRIP ─── */
+  .nav-strip{
+    position:sticky;top:0;z-index:100;
+    background:var(--white);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 1px 8px rgba(0,0,0,.05);
+  }
+  .nav-inner{
+    max-width:1100px;margin:0 auto;
+    display:flex;align-items:center;gap:0;
+    padding:0 2rem;overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .nav-inner::-webkit-scrollbar{display:none}
+  .nav-inner a{
+    padding:1rem 1.1rem;
+    font-size:.82rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--text-light);text-decoration:none;
+    white-space:nowrap;
+    border-bottom:2.5px solid transparent;
+    transition:all .2s;
+  }
+  .nav-inner a:hover{color:var(--burgundy);border-bottom-color:var(--burgundy)}
+
+  /* ─── SECTIONS ─── */
+  section{padding:4rem 2rem}
+  .container{max-width:1100px;margin:0 auto}
+  .section-label{
+    font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--burgundy);
+    margin-bottom:.6rem;
+  }
+  .section-title{
+    font-family:'DM Serif Display',Georgia,serif;
+    font-size:clamp(1.6rem,3vw,2.2rem);
+    color:var(--charcoal);
+    line-height:1.2;
+    margin-bottom:1.2rem;
+  }
+
+  /* ─── OVERVIEW ─── */
+  .overview-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;
+    margin-top:2rem;
+  }
+  .overview-text{font-size:1.05rem;color:var(--text);line-height:1.7}
+  .overview-text p+p{margin-top:1rem}
+  .info-cards{display:flex;flex-direction:column;gap:1rem}
+  .info-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.3rem 1.5rem;
+    display:flex;align-items:flex-start;gap:1rem;
+  }
+  .info-card .ic-icon{
+    width:42px;height:42px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(139,26,58,.07);
+    color:var(--burgundy);
+  }
+  .info-card .ic-icon svg{width:20px;height:20px}
+  .info-card h4{font-size:.92rem;font-weight:700;color:var(--charcoal);margin-bottom:.15rem}
+  .info-card p{font-size:.88rem;color:var(--text-light);line-height:1.5}
+  .info-card a{color:var(--burgundy);text-decoration:underline;text-underline-offset:2px}
+
+  /* ─── PROGRAMME TIMELINE ─── */
+  #programme{background:var(--white)}
+  .programme-blocks{margin-top:2.5rem;display:flex;flex-direction:column;gap:2.5rem}
+  .phase{
+    border:1px solid var(--border);
+    border-radius:16px;overflow:hidden;
+    background:var(--cream);
+  }
+  .phase-header{
+    padding:1.6rem 2rem;
+    display:flex;align-items:center;gap:1.4rem;
+    border-bottom:1px solid var(--border);
+    background:var(--white);
+  }
+  .phase-number{
+    width:54px;height:54px;border-radius:14px;flex-shrink:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:'DM Serif Display',serif;
+    color:var(--white);
+    line-height:1;
+  }
+  .phase-number.course{background:var(--burgundy)}
+  .phase-number.workshop{background:var(--accent-sage)}
+  .phase-number small{font-size:.55rem;font-weight:600;font-family:'Source Sans 3',sans-serif;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+  .phase-number span{font-size:1.4rem}
+  .phase-header h3{
+    font-family:'DM Serif Display',serif;
+    font-size:1.25rem;color:var(--charcoal);line-height:1.3;
+  }
+  .phase-header h3 em{font-style:normal;color:var(--text-light);font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:400;display:block;margin-top:.2rem}
+  .phase-body{padding:1.8rem 2rem}
+  .day-row{display:flex;gap:2rem;margin-bottom:1.8rem}
+  .day-row:last-child{margin-bottom:0}
+  .day-label{
+    width:110px;flex-shrink:0;
+    font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--burgundy);
+    padding-top:.15rem;
+  }
+  .day-label span{display:block;font-weight:400;color:var(--text-light);letter-spacing:0;text-transform:none;font-size:.85rem;margin-top:.1rem}
+  .day-sessions{flex:1}
+  .session{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:1rem 1.3rem;
+    margin-bottom:.7rem;
+    display:flex;align-items:baseline;gap:1rem;
+  }
+  .session:last-child{margin-bottom:0}
+  .session-hours{
+    flex-shrink:0;
+    font-size:.78rem;font-weight:600;color:var(--accent-gold);
+    background:rgba(200,151,62,.1);
+    padding:.2rem .55rem;border-radius:5px;
+    white-space:nowrap;
+  }
+  .session-hours.sage{color:var(--accent-sage);background:rgba(94,140,106,.1)}
+  .session-title{font-size:.95rem;font-weight:500;color:var(--charcoal)}
+
+  /* ─── KEYNOTE ─── */
+  .keynote-card{
+    margin-top:1.5rem;
+    background:linear-gradient(135deg,var(--burgundy-deep),var(--burgundy));
+    border-radius:16px;
+    padding:2.2rem 2.5rem;
+    color:var(--white);
+    display:flex;align-items:center;gap:2rem;
+  }
+  .keynote-icon{
+    width:64px;height:64px;flex-shrink:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .keynote-icon svg{width:28px;height:28px;color:var(--accent-gold)}
+  .keynote-card h4{font-family:'DM Serif Display',serif;font-size:1.2rem;line-height:1.3;margin-bottom:.4rem}
+  .keynote-card p{font-size:.92rem;opacity:.75;line-height:1.5}
+
+  /* ─── WHO / APPLY ─── */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+  .who-list{list-style:none;margin-top:1rem}
+  .who-list li{
+    padding:.7rem 0;
+    border-bottom:1px solid var(--border);
+    font-size:.95rem;
+    display:flex;align-items:baseline;gap:.7rem;
+  }
+  .who-list li::before{
+    content:'';width:7px;height:7px;border-radius:50%;flex-shrink:0;
+    background:var(--burgundy);
+    margin-top:.45rem;
+  }
+
+  /* ─── APPLY FORM BOX ─── */
+  #apply{background:var(--white)}
+  .apply-box{
+    margin-top:2rem;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .apply-box-header{
+    background:var(--burgundy);
+    padding:1.6rem 2rem;
+    color:var(--white);
+  }
+  .apply-box-header h3{font-family:'DM Serif Display',serif;font-size:1.3rem}
+  .apply-box-header p{font-size:.88rem;opacity:.75;margin-top:.3rem}
+  .apply-body{padding:2rem}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+  .form-group{display:flex;flex-direction:column}
+  .form-group.full{grid-column:1/-1}
+  .form-group label{font-size:.8rem;font-weight:600;color:var(--charcoal);margin-bottom:.35rem;letter-spacing:.02em}
+  .form-group input,.form-group select,.form-group textarea{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:.7rem .9rem;
+    font-size:.92rem;
+    font-family:inherit;
+    color:var(--charcoal);
+    background:var(--cream);
+    transition:border-color .2s;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+    outline:none;border-color:var(--burgundy);
+  }
+  .form-group textarea{resize:vertical;min-height:80px}
+
+  .checkbox-group{margin:1rem 0;display:flex;flex-direction:column;gap:.6rem}
+  .checkbox-group label{
+    display:flex;align-items:flex-start;gap:.6rem;
+    font-size:.88rem;color:var(--text);cursor:pointer;
+  }
+  .checkbox-group input[type=checkbox]{
+    margin-top:.25rem;width:16px;height:16px;accent-color:var(--burgundy);
+  }
+
+  .btn-submit{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--burgundy);color:var(--white);
+    border:none;border-radius:10px;
+    padding:.85rem 2rem;
+    font-size:.95rem;font-weight:600;font-family:inherit;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .btn-submit:hover{background:var(--burgundy-deep)}
+  .btn-submit svg{width:16px;height:16px}
+
+  /* ─── DATES STRIP ─── */
+  .dates-strip{
+    margin-top:2.5rem;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  }
+  .date-card{
+    background:var(--cream);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.2rem 1.4rem;
+    text-align:center;
+  }
+  .date-card h4{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--burgundy);margin-bottom:.3rem}
+  .date-card p{font-size:1rem;font-weight:600;color:var(--charcoal)}
+
+  /* ─── ACCOMMODATION ─── */
+  .accom-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+  .accom-card{
+    background:var(--white);border:1px solid var(--border);border-radius:12px;
+    padding:1.5rem;
+  }
+  .accom-card h4{font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:.3rem}
+  .accom-card p{font-size:.88rem;color:var(--text-light);line-height:1.5;margin-bottom:.8rem}
+  .accom-card a{
+    display:inline-flex;align-items:center;gap:.3rem;
+    font-size:.85rem;font-weight:600;color:var(--burgundy);
+    text-decoration:none;
+  }
+  .accom-card a:hover{text-decoration:underline}
+  .accom-card a svg{width:14px;height:14px}
+
+  /* ─── FOOTER ─── */
+  footer{
+    background:var(--charcoal);
+    color:rgba(255,255,255,.6);
+    padding:2.5rem 2rem;
+    text-align:center;
+    font-size:.85rem;
+    line-height:1.7;
+  }
+  footer a{color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:2px}
+
+  /* ─── RESPONSIVENESS ─── */
+  @media(max-width:800px){
+    .overview-grid,.two-col,.form-row,.accom-cards{grid-template-columns:1fr}
+    .day-row{flex-direction:column;gap:.6rem}
+    .day-label{width:auto}
+    .keynote-card{flex-direction:column;text-align:center}
+    .dates-strip{grid-template-columns:1fr}
+    .hero-meta{flex-direction:column;gap:.6rem}
+    .phase-header{flex-direction:column;gap:.8rem;text-align:center}
+  }
+
+  /* ─── LOGO ─── */
+  /* Desktop: float to top-right of the hero content area */
+  .hero-logo{
+    position:absolute;
+    top:2rem;right:2rem;
+    z-index:3;
+    height:100px;
+    opacity:.9;
+    filter:brightness(1.1);
+  }
+
+  /* Mobile: drop out of absolute positioning and flow inline */
+  @media(max-width:800px){
+    .hero-logo{
+      position:static;
+      display:block;
+      height:70px;
+      margin-bottom:1.4rem;
+      opacity:.9;
+    }
+  }
+
+  /* subtle entrance animation */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .hero-content > *{animation:fadeUp .7s ease both}
+  .hero-content > :nth-child(2){animation-delay:.1s}
+  .hero-content > :nth-child(3){animation-delay:.2s}
+  .hero-content > :nth-child(4){animation-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <!-- Logo lives inside the content flow so it doesn't float above text on mobile -->
+    <img class="hero-logo" src="https://www.royalholloway.ac.uk/images/logoRoyalHolloway2x.png" alt="Royal Holloway, University of London">
+    <h1>Summer School in Economics of <em>Health &amp; Human Capital</em></h1>
+    <p class="hero-sub">A four-day programme in central London combining a graduate course in health economics with a research workshop featuring contributed talks, posters, and a keynote lecture.</p>
+    <div class="hero-meta">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        12 – 15 May 2026
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Central London
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+        10-hour training course + individual feedback sessions + 2-day workshop
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        No fee · In person
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-strip">
+  <div class="nav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#programme">Programme</a>
+    <a href="#who">Who Should Apply</a>
+    <a href="#apply">Register</a>
+    <a href="#practical">Practical Info</a>
+  </div>
+</nav>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section id="overview">
+  <div class="container">
+    <div class="section-label">About the Summer School</div>
+    <h2 class="section-title">Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-text">
+        <p>This summer school is organised by the <strong>Centre for the Economics of the Household (EcHo)</strong> at Royal Holloway, University of London. It brings together doctoral students and early-career researchers interested in the economics of health and human capital. The four-day programme takes place in central London and combines structured teaching with an open research workshop.</p>
+        <p><strong>Days 1–2</strong> feature an intensive graduate course covering the economic modelling of health, early-life conditions, education-health interactions, and the intergenerational transmission of health and disadvantage. The course is taught by <strong>Martin Karlsson</strong> (Leverhulme Visiting Professor; Director, CINCH, University of Duisburg-Essen). On the afternoon of Day 2, participants can sign up for individual research feedback meetings with Professors Arnaud Chevalier, Melanie Lührmann, and Martin Karlsson, offered on a first-come-first-served basis.</p>
+        <p><strong>Days 3–4</strong> shift to a research workshop where participants can present their own work through contributed talks or a poster session, alongside invited presentations and a keynote lecture.</p>
+      </div>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <div>
+            <h4>Dates</h4>
+            <p>12 – 15 May 2026 (Tuesday – Friday)</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Stewart House, 32 Russell Square, London WC1B 5DN<br>(all four days)</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <h4>Fee</h4>
+            <p>There is no registration fee. Participants are expected to fund their own travel and accommodation.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <h4>Instructor</h4>
+            <p><strong>Martin Karlsson</strong><br>Leverhulme Visiting Professor · Director, CINCH Essen</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div>
+            <h4>Organised by</h4>
+            <p><a href="#">EcHo</a> — Centre for the Economics of the Household, Department of Economics, Royal Holloway, University of London</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROGRAMME ═══ -->
+<section id="programme">
+  <div class="container">
+    <div class="section-label">Programme</div>
+    <h2 class="section-title">Programme</h2>
+
+    <div class="programme-blocks">
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number course"><small>Phase</small><span>I</span></div>
+          <h3>Graduate Course: Economics of Health<em>Stewart House, Russell Square, London · 12–13 May</em></h3>
+        </div>
+        <div class="phase-body">
+          <div class="day-row">
+            <div class="day-label">Day 1<span>Tue 12 May</span></div>
+            <div class="day-sessions">
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Beyond Grossman: Recent Advances in Economic Modelling of Health</span>
+              </div>
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Early Life Conditions and Targeted Policies (Part I)</span>
+              </div>
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Early Life Conditions and Targeted Policies (Part II)</span>
+              </div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">Day 2<span>Wed 13 May</span></div>
+            <div class="day-sessions">
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Education and Health</span>
+              </div>
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Intergenerational Transmission of Health</span>
+              </div>
+              <div class="session">
+                <span class="session-hours" style="color:var(--accent-sage);background:rgba(94,140,106,.1)">PM</span>
+                <span class="session-title">Individual Research Feedback Meetings<br><span style="font-size:.84rem;color:var(--text-light)">With Professors Arnaud Chevalier, Melanie Lührmann &amp; Martin Karlsson </span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number workshop"><small>Phase</small><span>II</span></div>
+          <h3>Research Workshop: Health &amp; Human Capital<em>Stewart House, Russell Square, London · 14–15 May</em></h3>
+        </div>
+        <div class="phase-body">
+          <div class="day-row">
+            <div class="day-label">Days 3–4<span>Thu–Fri 14–15 May</span></div>
+            <div class="day-sessions">
+              <div class="session">
+                <span class="session-hours sage">Invited</span>
+                <span class="session-title">Invited presentations on health and human capital</span>
+              </div>
+              <div class="session">
+                <span class="session-hours sage">Contributed</span>
+                <span class="session-title">Short talks and poster session by summer school participants</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="keynote-card">
+            <div class="keynote-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.09 6.26L21 9.27l-5.18 4.73L17.82 21 12 17.27 6.18 21l1.82-7L3 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div>
+              <h4>Keynote Lecture: From Cradle to Grave — Life-Cycle and Intergenerational Dynamics of Health</h4>
+              <p>Martin Karlsson · Leverhulme Visiting Professor | Director, CINCH, University of Duisburg-Essen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHO SHOULD APPLY ═══ -->
+<section id="who">
+  <div class="container">
+    <div class="section-label">Audience</div>
+    <h2 class="section-title">Who Should Apply</h2>
+    <div class="two-col">
+      <div>
+        <p style="font-size:1.02rem;line-height:1.7">The summer school is designed for graduate students and early-career researchers in economics and related disciplines who want to deepen their understanding of health economics, human capital theory, and the methods used to evaluate health-related policies across the life course.</p>
+        <ul class="who-list">
+          <li>PhD students in economics, public policy, demography, or epidemiology</li>
+          <li>Early-career researchers (post-docs and lecturers) working on health, education, or household economics</li>
+          <li>Master's students with strong quantitative training considering doctoral study in these areas</li>
+          <li>Policy researchers at government agencies and think tanks working on health and social policy</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label" style="margin-top:0">Topics We Welcome</div>
+        <p style="font-size:.95rem;color:var(--text-light);line-height:1.7;margin-top:.4rem">Participants applying to present at the workshop (poster or short talk) are invited to submit work on any of the following topics:</p>
+        <ul class="who-list">
+          <li>Health and labour markets and policies</li>
+          <li>Economic determinants of health</li>
+          <li>Health inequalities</li>
+          <li>Life-cycle health dynamics</li>
+          <li>Early childhood interventions and environments</li>
+          <li>Health and education</li>
+          <li>Healthcare access and financing</li>
+          <li>Mental health and well-being</li>
+          <li>Household well-being and IPV</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGISTER ═══ -->
+<section id="apply">
+  <div class="container">
+    <div class="section-label">Registration</div>
+    <h2 class="section-title">Apply to Attend</h2>
+    <p style="font-size:1.02rem;color:var(--text);max-width:680px;line-height:1.7">Places are limited. Please complete the form below to register your interest. You may attend the full programme (course + workshop), or the workshop only. If you wish to present, include a title and short abstract.</p>
+
+    <div class="dates-strip">
+      <div class="date-card">
+        <h4>Registration Deadline</h4>
+        <p>20 April 2026</p>
+      </div>
+      <div class="date-card">
+        <h4>Notification</h4>
+        <p>28 April 2026</p>
+      </div>
+      <div class="date-card">
+        <h4>Summer School</h4>
+        <p>12 – 15 May 2026</p>
+      </div>
+    </div>
+
+    <div class="apply-box" style="margin-top:2rem">
+      <div class="apply-box-header">
+        <h3>Registration Form</h3>
+        <p>All fields marked * are required</p>
+      </div>
+      <div class="apply-body">
+        <form id="registrationForm">
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" name="firstName" required></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" name="lastName" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address *</label><input type="email" name="email" required></div>
+            <div class="form-group"><label>Institution / Affiliation *</label><input type="text" name="institution" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Current Position *</label>
+              <select name="position" required>
+                <option value="" disabled selected>Select…</option>
+                <option>PhD student</option>
+                <option>Post-doctoral researcher</option>
+                <option>Lecturer / Assistant Professor</option>
+                <option>Master's student</option>
+                <option>Policy researcher</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>I wish to register for *</label>
+              <select name="registerFor" required>
+                <option value="" disabled selected>Select…</option>
+                <option>Full programme (Course + Workshop)</option>
+                <option>Workshop only (14–15 May)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="poster"> I would like to present a <strong>poster</strong> at the workshop</label>
+           </div>
+
+          <div class="form-row" style="margin-top:1rem">
+            <div class="form-group full">
+              <label>Paper / Poster Title (if presenting)</label>
+              <input type="text" name="paperTitle" placeholder="e.g. The Long-Run Effects of Early Nutrition on Adult Health">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Abstract (max 300 words, if presenting)</label>
+              <textarea name="abstract" placeholder="Brief description of your research…"></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top:1.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+            <button type="submit" class="btn-submit" id="submitBtn">
+              Submit Registration
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <span style="font-size:.82rem;color:var(--text-light)">or email <a href="/cdn-cgi/l/email-protection#d4b1b7bcbbfaa6bca1b894b3b9b5bdb8fab7bbb9" style="color:var(--burgundy)"><span class="__cf_email__" data-cfemail="c1a4a2a9aeefb3a9b4ad81a6aca0a8adefa2aeac">[email&#160;protected]</span></a></span>
+          </div>
+
+          <div id="formSuccess" style="display:none;margin-top:1rem;padding:1rem 1.3rem;background:rgba(94,140,106,.1);border:1px solid var(--accent-sage);border-radius:10px;color:var(--accent-sage);font-weight:600">
+            ✓ Thank you! Your registration has been received. We will be in touch.
+          </div>
+          <div id="formError" style="display:none;margin-top:1rem;padding:1rem 1.3rem;background:rgba(139,26,58,.08);border:1px solid var(--burgundy);border-radius:10px;color:var(--burgundy);font-weight:600">
+            Something went wrong. Please try again or email us directly at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="781d1b1017560a100d14381f15191114561b1715">[email&#160;protected]</a>.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRACTICAL INFO ═══ -->
+<section id="practical">
+  <div class="container">
+    <div class="section-label">Practical Information</div>
+    <h2 class="section-title">Venue &amp; Accommodation</h2>
+    <p style="font-size:1.02rem;color:var(--text);max-width:680px;line-height:1.7;margin-bottom:1rem">The summer school takes place at <strong>Stewart House, 32 Russell Square, London WC1B 5DN</strong>, in the heart of Bloomsbury. There is no registration fee. Participants are expected to cover their own travel and accommodation.</p>
+
+    <div class="accom-cards" style="grid-template-columns:1fr">
+      <div class="accom-card">
+        <h4>Affordable Accommodation · University of London</h4>
+        <p>The University of London offers affordable rooms at Stay Central, located within walking distance of Stewart House in the Bloomsbury area.</p>
+        <a href="https://www.london.ac.uk/about/services/stay-central" target="_blank">
+          Book Stay Central accommodation
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <strong style="color:rgba(255,255,255,.85)">EcHo — Centre for the Economics of the Household </strong><br>
+    Royal Holloway, University of London<br><br>
+    Questions? Contact <a href="/cdn-cgi/l/email-protection#c7a2a4afa8e9b5afb2ab87a0aaa6aeabe9a4a8aa"><span class="__cf_email__" data-cfemail="d4b1b7bcbbfaa6bca1b894b3b9b5bdb8fab7bbb9">[email&#160;protected]</span></a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const btn = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('formSuccess');
+  const errorMsg = document.getElementById('formError');
+  
+  successMsg.style.display = 'none';
+  errorMsg.style.display = 'none';
+  
+  btn.disabled = true;
+  btn.innerHTML = 'Submitting…';
+  
+  const form = this;
+  const data = {
+    timestamp: new Date().toISOString(),
+    firstName: form.firstName.value,
+    lastName: form.lastName.value,
+    email: form.email.value,
+    institution: form.institution.value,
+    position: form.position.value,
+    registerFor: form.registerFor.value,
+    poster: form.poster.checked ? 'Yes' : 'No',
+    shortTalk: form.shortTalk.checked ? 'Yes' : 'No',
+    paperTitle: form.paperTitle.value || '',
+    abstract: form.abstract.value || ''
+  };
+  
+  try {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'ap
